@@ -1,0 +1,49 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-04-21",
+  "description": "跨境电商交易审计风险模式库",
+  "patterns": [
+    {
+      "id": "PATTERN-001",
+      "name": "同一货物高频发往同一国家",
+      "description": "相同货物代码在7天内发往同一国家超过3次",
+      "severity": "high",
+      "category": "刷单风险",
+      "rules": {
+        "field": "货物代码",
+        "groupBy": ["货物代码", "国家"],
+        "timeWindow": "7d",
+        "threshold": 3
+      },
+      "discoveredAt": "2026-04-21",
+      "discoverySource": "初始设置"
+    },
+    {
+      "id": "PATTERN-002",
+      "name": "单价异常波动",
+      "description": "同一货物代码单价波动超过50%",
+      "severity": "medium",
+      "category": "价格异常",
+      "rules": {
+        "field": "单价",
+        "groupBy": ["货物代码"],
+        "波动阈值": 0.5
+      },
+      "discoveredAt": "2026-04-21",
+      "discoverySource": "初始设置"
+    },
+    {
+      "id": "PATTERN-003",
+      "name": "整数数量可疑订单",
+      "description": "订单数量为100、500、1000等整数",
+      "severity": "low",
+      "category": "刷单风险",
+      "rules": {
+        "field": "数量",
+        "suspiciousNumbers": [10, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
+      },
+      "discoveredAt": "2026-04-21",
+      "discoverySource": "初始设置"
+    }
+  ]
+}
