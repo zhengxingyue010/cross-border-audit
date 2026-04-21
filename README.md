@@ -19,6 +19,7 @@
 | 自定义模式 | 持续学习和扩展 | 可变 |
 
 ## 项目结构
+此库仅展示openclaw框架工作区中项目文件cross-border-audit文件
 
 ```
 cross-border-audit/
